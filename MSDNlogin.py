@@ -11,7 +11,7 @@ def prompt():
         usr_pwd = pwd.get()
         email.delete(first=0, last=50)
         pwd.delete(first=0, last=50)
-        if usr_email == "azure_email" and usr_pwd == "azure_password":
+        if usr_email == "sbh5436@psu.edu" and usr_pwd == "@PSU.edu.com123#":
             launch.disp_main()
         else:
             pwd_notif = confirm(text="Password is Incorrect, Try Again...", title="Try Again",

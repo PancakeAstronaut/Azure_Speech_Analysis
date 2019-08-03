@@ -1,17 +1,17 @@
 import json                 # json to format the response information
 import requests             # requests to make HTTP POST requests to Cognitive Services
-import AzureSpeechAnalysis as analyze
+import AzureSpeechAnalysis as analyze         # Importing this module to call the analysis function
 
-KEY = ''        # Azure API Key
-AUDIO_INPUT = 'Audio_Files/' + 'test.wav'                        # Input File Name/Path
-REGION = ''                               # Service Region
+KEY = '31efbb95e1a04281bb34a2c098a9891c'        # Azure API Key
+REGION = 'eastus'                               # Service Region
 MODE = 'interactive'                            # Use Mode
 LANG = 'en-US'                                  # Language Specification
 FORMAT = 'simple'                               # Call Format
 STORAGE = 'data_storage/speech_data.json'
 
 
-def handler():                          # Service Handler
+def handler(audio_input):                          # Service Handler
+    AUDIO_INPUT = audio_input
     # 1. Get an Authorization Token
     token = get_token()
     # 2. Perform Speech Recognition

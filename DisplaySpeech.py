@@ -1,6 +1,7 @@
 from tkinter import *
 from pymsgbox import *
 import dashboard
+import AzureSpeechAnalysis as clear_polarity
 
 
 def exit_func():
@@ -16,6 +17,7 @@ def display(query, sentiment):
 
     def recall():
         disp.withdraw()
+        clear_polarity.sentiment_Polarity.pop()
         dashboard.disp_main()
 
     polarity_analysis = round(float(sentiment[0]), 1)
