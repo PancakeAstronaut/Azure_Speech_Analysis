@@ -2,9 +2,9 @@ import json                 # json to format the response information
 import requests             # requests to make HTTP POST requests to Cognitive Services
 import AzureSpeechAnalysis as analyze
 
-KEY = '31efbb95e1a04281bb34a2c098a9891c'        # Azure API Key
+KEY = ''        # Azure API Key
 AUDIO_INPUT = 'Audio_Files/' + 'test.wav'                        # Input File Name/Path
-REGION = 'eastus'                               # Service Region
+REGION = ''                               # Service Region
 MODE = 'interactive'                            # Use Mode
 LANG = 'en-US'                                  # Language Specification
 FORMAT = 'simple'                               # Call Format
@@ -59,4 +59,4 @@ def stream_audio_file(speech_file, chunk_size=1024):          # Stream audio dat
 
 
 if __name__ == '__main__':              # this is here to define main and ensures the function doesn't run endlessly
-    main()
+    handler()
