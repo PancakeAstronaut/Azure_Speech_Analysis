@@ -15,7 +15,7 @@ def disp_main():
                                "'Audio_Files/Imported_Audio' folder otherwise this will not work.", title="Check Files",
                           buttons=['Proceed', 'Return'])
         if warning == "Proceed":
-            Azure_Speech_Import_API.handler('Audio_Files/Imported_Audio/test.wav')
+            Azure_Speech_Import_API.handler('Audio_Files/Imported_Audio/Import.wav')
         else:
             disp_main()
 

@@ -1,4 +1,5 @@
 To Import a pre-existing audio file:
 
-1. Ensure File has the 'WAV' file extension
-2. Place the file in the Imported_Audio Folder
+1. Name your file 'Import.wav'
+2. Ensure File has the 'WAV' file extension
+3. Place the file in the Imported_Audio Folder
