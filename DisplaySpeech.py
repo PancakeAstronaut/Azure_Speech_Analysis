@@ -15,10 +15,15 @@ def exit_func():
 
 def display(query, sentiment):              # display function
 
-    def recall():           # recalls the dash window if the user chooses to retry
-        disp.withdraw()
-        clear_polarity.sentiment_Polarity.pop()
-        dashboard.disp_main()
+    def back():
+        backconf = confirm(text="Are you sure you want to return to the Dashboard?", title="Back to Dashboard?",
+                           buttons=['Yes', 'No'])
+        if backconf == "Yes":
+            disp.withdraw()
+            clear_polarity.sentiment_Polarity.pop()
+            dashboard.disp_main()
+        else:
+            pass
 
     polarity_analysis = round(float(sentiment[0]), 1)           # evaluates the sentiment polarity value
     if polarity_analysis > .5:
@@ -51,11 +56,10 @@ def display(query, sentiment):              # display function
     tone_lbl.grid(column=2, row=8)
     div4 = Label(disp, text="------------------------")
     div4.grid(column=2, row=9)
-    resubmit = Button(disp, text="Retry", command=recall)
-    resubmit.grid(column=2, row=10)
+    backbtn = Button(disp, text="Return to Dashboard", command=back)
+    backbtn.grid(column=2, row=10)
     exit_btn = Button(disp, text="Exit", command=exit_func)
     exit_btn.grid(column=2, row=11)
-
     disp.mainloop()
 
 

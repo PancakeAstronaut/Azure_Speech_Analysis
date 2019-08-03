@@ -22,9 +22,11 @@ def disp_main():
     def azure_speech_search_raw():          # starts the raw speech input module
         warning = confirm(text="Please make sure your microphone is enabled\n"
                                "Speech recording will commence once you click\n"
-                               "Proceed", title="Input Check",
-                          buttons=['Proceed', 'Return'])
-        if warning == "Proceed":
+                               "'Start Speaking'. Once clicked you can start speaking.\n"
+                               "When you are finished please wait a few seconds and\n"
+                               "the display window will come up.", title="Input Check",
+                          buttons=['Start Speaking', 'Return'])
+        if warning == "Start Speaking":
             raw_wav.main()
         else:
             disp_main()

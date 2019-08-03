@@ -27,6 +27,7 @@ def prompt():       # launches the login window
             pass
 
     login_window = Tk()                             # GUI assembly
+    login_window.title("Log in to MSDN")
     login_window.columnconfigure(0, weight=1)
     login_window.columnconfigure(3, weight=1)
     login_window.rowconfigure(0, weight=1)

@@ -1,6 +1,7 @@
 from tkinter import *           # tkinter for GUI assembly
 from pymsgbox import *          # for confirmation boxes
 import CognitiveServicesTextAnalytics as AzureAPI
+import dashboard
 
 
 def exit_func():                # exit confirmation
@@ -13,6 +14,15 @@ def exit_func():                # exit confirmation
 
 
 def display(query, sentiment):          # display function
+
+    def back():
+        backconf = confirm(text="Are you sure you want to return to the Dashboard?", title="Back to Dashboard?",
+                           buttons=['Yes', 'No'])
+        if backconf == "Yes":
+            disp.withdraw()
+            dashboard.disp_main()
+        else:
+            pass
 
     def recall():               # recall function resets if the user clicks retry
         AzureAPI.sentiment_Polarity.pop()
@@ -52,8 +62,10 @@ def display(query, sentiment):          # display function
     div4.grid(column=2, row=9)
     resubmit = Button(disp, text="Retry", command=recall)
     resubmit.grid(column=2, row=10)
+    backbtn = Button(disp, text="Return to Dashboard", command=back)
+    backbtn.grid(column=2, row=11)
     exit_btn = Button(disp, text="Exit", command=exit_func)
-    exit_btn.grid(column=2, row=11)
+    exit_btn.grid(column=2, row=12)
 
     disp.mainloop()
 

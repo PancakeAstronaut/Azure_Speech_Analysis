@@ -3,6 +3,7 @@ from msrest.authentication import CognitiveServicesCredentials
 from tkinter import *
 from pymsgbox import *
 import display
+import dashboard
 
 key_phrases = []
 sentiment_Polarity = []
@@ -18,6 +19,15 @@ def exit_func():
 
 
 def get_search_query():
+
+    def back_dash():
+        back = confirm(text="Are you sure you want to return to the Dashboard?", title="Back to Dashboard?",
+                       buttons=['Yes', 'No'])
+        if back == "Yes":
+            search.withdraw()
+            dashboard.disp_main()
+        else:
+            pass
 
     def validate_azure_credentials():
         inputVar = search_string.get()
@@ -46,13 +56,21 @@ def get_search_query():
     search.rowconfigure(0, weight=1)
     search.configure(background='blue')  # window background color
     label_term1 = Label(search, text="Enter a string of text for Azure to analyze:")
-    label_term1.grid(column=2, row=0)  # labels and entry boxes
+    label_term1.grid(column=3, row=2)  # labels and entry boxes
     search_string = Entry(search, width=50)
-    search_string.grid(column=2, row=1)
+    search_string.grid(column=3, row=3)
     Azure_call = Button(search, text="Analyze", command=validate_azure_credentials)
-    Azure_call.grid(column=2, row=2)
+    Azure_call.grid(column=3, row=4)
     Exit_btn = Button(search, text="Exit", command=exit_func)
-    Exit_btn.grid(column=2, row=3)
+    Exit_btn.grid(column=3, row=5)
+    backbtn = Button(search, text="Back to Dashboard", command=back_dash)
+    backbtn.grid(column=1, row=0)
+    paddingright = Label(search, bg='blue', text="                 ")
+    paddingright.grid(column=5, row=0)
+    paddingtop = Label(search, bg='blue', text="\n\n")
+    paddingtop.grid(column=3, row=0)
+    paddingbottom = Label(search, bg='blue', text="\n\n")
+    paddingbottom.grid(column=3, row=7)
     search.mainloop()
 
 
