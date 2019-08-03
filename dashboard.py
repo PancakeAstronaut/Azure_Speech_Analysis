@@ -24,7 +24,7 @@ def disp_main():
         usr_pwd = pwd.get()
         email.delete(first=0, last=50)
         pwd.delete(first=0, last=50)
-        if usr_email == "sbh5436@psu.edu" and usr_pwd == "@PSU.edu.com123#":
+        if usr_email == "azure email" and usr_pwd == "azure password":
             azure_speech_search()
         else:
             pwd_notif = confirm(text="Password is Incorrect, Try Again...", title="Try Again",
@@ -37,7 +37,7 @@ def disp_main():
         usr_pwd = pwd.get()
         email.delete(first=0, last=50)
         pwd.delete(first=0, last=50)
-        if usr_email == "sbh5436@psu.edu" and usr_pwd == "@PSU.edu.com123#":
+        if usr_email == "azure email" and usr_pwd == "azure password":
             azure_text_search()
         else:
             pwd_notif = confirm(text="Password is Incorrect, Try Again...", title="Try Again",
