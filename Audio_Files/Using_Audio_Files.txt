@@ -1,1 +1,3 @@
-Audio Files go in here. 
+Audio Files go in here.
+!!!Don't touch the Raw_Input Folder!!!
+Imported Files go into the Imported_Audio Folder

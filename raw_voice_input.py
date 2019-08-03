@@ -12,12 +12,10 @@ RATE = 44100
 
 
 def is_silent(snd_data):
-    '''Returns 'True' if below the 'silent' threshold'''
     return max(snd_data) < THRESHOLD
 
 
 def normalize(snd_data):
-    '''Average the volume out'''
     MAXIMUM = 16384
     times = float(MAXIMUM)/max(abs(i) for i in snd_data)
 
@@ -28,7 +26,6 @@ def normalize(snd_data):
 
 
 def trim(snd_data):
-    "Trim the blank spots at the start and end"
     def _trim(snd_data):
         snd_started = False
         r = array('h')
@@ -53,7 +50,6 @@ def trim(snd_data):
 
 
 def add_silence(snd_data, seconds):
-    "Add silence to the start and end of 'snd_data' of length 'seconds' (float)"
     r = array('h', [0 for i in range(int(seconds*RATE))])
     r.extend(snd_data)
     r.extend([0 for i in range(int(seconds*RATE))])
@@ -61,15 +57,6 @@ def add_silence(snd_data, seconds):
 
 
 def record():
-    """
-    Record a word or words from the microphone and
-    return the data as an array of signed shorts.
-
-    Normalizes the audio, trims silence from the
-    start and end, and pads with 0.5 seconds of
-    blank sound to make sure VLC et al can play
-    it without getting chopped off.
-    """
     p = pyaudio.PyAudio()
     stream = p.open(format=FORMAT, channels=1, rate=RATE,
                     input=True, output=True,
@@ -109,7 +96,6 @@ def record():
 
 
 def record_to_file(path):
-    "Records from the microphone and outputs the resulting data to 'path'"
     sample_width, data = record()
     data = pack('<' + ('h'*len(data)), *data)
 

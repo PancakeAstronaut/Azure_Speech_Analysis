@@ -12,7 +12,7 @@ def disp_main():
 
     def azure_speech_search_import():
         warning = confirm(text="Please make sure your audio file is in the\n"
-                               "'Audio_Files' folder otherwise this will not work.", title="Check Files",
+                               "'Audio_Files/Imported_Audio' folder otherwise this will not work.", title="Check Files",
                           buttons=['Proceed', 'Return'])
         if warning == "Proceed":
             Azure_Speech_Import_API.handler('Audio_Files/Imported_Audio/test.wav')
