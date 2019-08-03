@@ -1,0 +1,1 @@
+Make sure you have an Azure Account with these services deployed. Put the information where indicated.
