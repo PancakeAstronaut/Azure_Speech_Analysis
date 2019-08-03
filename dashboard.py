@@ -20,29 +20,11 @@ def disp_main():
 
     def speech_credentials_check():
         frame.withdraw()
-        usr_email = email.get()
-        usr_pwd = pwd.get()
-        email.delete(first=0, last=50)
-        pwd.delete(first=0, last=50)
-        if usr_email == "azure email" and usr_pwd == "azure password":
-            azure_speech_search()
-        else:
-            pwd_notif = confirm(text="Password is Incorrect, Try Again...", title="Try Again",
-                                buttons=['Acknowledge'])
-            disp_main()
+        azure_speech_search()
 
     def text_credentials_check():
         frame.withdraw()
-        usr_email = email.get()
-        usr_pwd = pwd.get()
-        email.delete(first=0, last=50)
-        pwd.delete(first=0, last=50)
-        if usr_email == "azure email" and usr_pwd == "azure password":
-            azure_text_search()
-        else:
-            pwd_notif = confirm(text="Password is Incorrect, Try Again...", title="Try Again",
-                                buttons=['Acknowledge'])
-            disp_main()
+        azure_text_search()
 
     def quit_scheme():
         exitClause = confirm(text="Are you sure you want to Exit?", title="Confirm Exit",
@@ -54,23 +36,21 @@ def disp_main():
 
     frame = Tk()
     frame.title("Azure Text Analysis")
-    frame.columnconfigure(5, weight=1)
-    frame.rowconfigure(5, weight=1)
-    frame.configure(background='blue')  # window background color
+    frame.configure(background='blue')
+    frame.columnconfigure(0, weight=1)
+    frame.rowconfigure(0, weight=1)
+    paddingleft = Label(frame, bg='blue', text="              ")
+    paddingleft.grid(column=0, row=0)
+    paddingright = Label(frame, bg='blue', text="              ")
+    paddingright.grid(column=5, row=0)
+    paddingbottom = Label(frame, bg='blue', text="\n\n")
+    paddingbottom.grid(column=3, row=15)
+    paddingtop = Label(frame, bg='blue', text="\n\n")
+    paddingtop.grid(column=3, row=0)
     introlbl = Label(frame, text="Welcome to the Text Analysis Tool using\n"
                                  "Microsoft Azure Cognitive Services:\n"
                                  "Text Analytics/Speech-to-Text API")
     introlbl.grid(column=3, row=1)
-    instructions = Label(frame, text="Enter your login Microsoft Login information and choose an option below")
-    instructions.grid(column=3, row=2)
-    label_email = Label(frame, text="Azure Email: ")
-    label_email.grid(column=3, row=5)
-    email = Entry(frame, width=50)
-    email.grid(column=3, row=6)
-    label_pwd = Label(frame, text="Azure Password: ")
-    label_pwd.grid(column=3, row=7)
-    pwd = Entry(frame, show="*", width=50)
-    pwd.grid(column=3, row=8)
     text_login = Button(frame, text="Analyze Text", command=text_credentials_check)  # buttons to call functions
     text_login.grid(column=3, row=9)
     text_login.config(height=2, width=12)
@@ -78,9 +58,8 @@ def disp_main():
     speech_login.grid(column=3, row=10)
     speech_login.config(height=2, width=12)
     exit_clause = Button(frame, text="Quit", command=quit_scheme)
-    exit_clause.grid(column=3, row=11)
+    exit_clause.grid(column=3, row=13)
     exit_clause.config(height=2, width=5)
-
     frame.mainloop()  # mainloop for tk
 
 
