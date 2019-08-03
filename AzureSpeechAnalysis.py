@@ -1,7 +1,7 @@
-from azure.cognitiveservices.language.textanalytics import TextAnalyticsClient
+from azure.cognitiveservices.language.textanalytics import TextAnalyticsClient      # Azure API imports
 from msrest.authentication import CognitiveServicesCredentials
-import DisplaySpeech
-import json
+import DisplaySpeech            # display module import
+import json             # json to read the storage file for audio input
 
 key_phrases = []
 sentiment_Polarity = []
@@ -9,7 +9,7 @@ sentiment_Polarity = []
 
 def analyze_speech():
 
-    def validate_azure_credentials():
+    def parse_input():               # parses the input from json and uses the API to analyze it
         STORAGE = 'data_storage/speech_data.json'
         with open(STORAGE) as speech_data:
             data = json.load(speech_data)
@@ -33,7 +33,7 @@ def analyze_speech():
 
         DisplaySpeech.display(query=inputVar, sentiment=sentiment_Polarity)
 
-    validate_azure_credentials()
+    parse_input()
 
 
 if __name__ == '__main__':     # if name = main calling main so that the file can be called without executing constantly

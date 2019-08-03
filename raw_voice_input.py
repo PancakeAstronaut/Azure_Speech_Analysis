@@ -1,21 +1,21 @@
-from sys import byteorder
+from sys import byteorder           # imports
 from array import array
 from struct import pack
 import CognitiveServicesSpeechAnalysis_Import as Azure_Speech_Import_API
-import pyaudio
+import pyaudio              # this one is not installed by default
 import wave
 
-THRESHOLD = 500
+THRESHOLD = 500                     # setting globals
 CHUNK_SIZE = 1024
 FORMAT = pyaudio.paInt16
 RATE = 44100
 
 
-def is_silent(snd_data):
+def is_silent(snd_data):                # if the input stream is silent
     return max(snd_data) < THRESHOLD
 
 
-def normalize(snd_data):
+def normalize(snd_data):                # normalizes audio input stream
     MAXIMUM = 16384
     times = float(MAXIMUM)/max(abs(i) for i in snd_data)
 
@@ -25,7 +25,7 @@ def normalize(snd_data):
     return r
 
 
-def trim(snd_data):
+def trim(snd_data):                 # trims the raw audio input
     def _trim(snd_data):
         snd_started = False
         r = array('h')
@@ -49,14 +49,14 @@ def trim(snd_data):
     return snd_data
 
 
-def add_silence(snd_data, seconds):
+def add_silence(snd_data, seconds):         # adds a silence to the input
     r = array('h', [0 for i in range(int(seconds*RATE))])
     r.extend(snd_data)
     r.extend([0 for i in range(int(seconds*RATE))])
     return r
 
 
-def record():
+def record():                           # records the audio input
     p = pyaudio.PyAudio()
     stream = p.open(format=FORMAT, channels=1, rate=RATE,
                     input=True, output=True,
@@ -95,7 +95,7 @@ def record():
     return sample_width, r
 
 
-def record_to_file(path):
+def record_to_file(path):               # records the data to the file
     sample_width, data = record()
     data = pack('<' + ('h'*len(data)), *data)
 
@@ -109,8 +109,8 @@ def record_to_file(path):
 
 def main():
     print("Speak Into Microphone Clearly...")
-    record_to_file('Audio_Files/Raw_Input/raw_input.wav')
-    Azure_Speech_Import_API.handler('Audio_Files/Raw_Input/raw_input.wav')
+    record_to_file('Audio_Files/Raw_Input/raw_input.wav')                   # starts the input process
+    Azure_Speech_Import_API.handler('Audio_Files/Raw_Input/raw_input.wav')      # passes input and dir info to handler
 
 
 if __name__ == '__main__':

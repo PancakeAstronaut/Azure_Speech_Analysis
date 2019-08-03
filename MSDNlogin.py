@@ -1,17 +1,17 @@
-from tkinter import *
-import dashboard as launch
-from pymsgbox import *
+from tkinter import *               # tkinter for GUI assembly
+import dashboard as launch          # module to launch dashboard
+from pymsgbox import *              # Confirmation boxes
 
 
-def prompt():
+def prompt():       # launches the login window
 
-    def login_request():
+    def login_request():            # analyzes the login request
         login_window.withdraw()
         usr_email = email.get()
         usr_pwd = pwd.get()
         email.delete(first=0, last=50)
         pwd.delete(first=0, last=50)
-        if usr_email == "sbh5436@psu.edu" and usr_pwd == "@PSU.edu.com123#":
+        if usr_email == "sbh5436@psu.edu" and usr_pwd == "@PSU.edu.com123#":            # compares credentials REPLACE
             launch.disp_main()
         else:
             pwd_notif = confirm(text="Password is Incorrect, Try Again...", title="Try Again",
@@ -21,12 +21,12 @@ def prompt():
     def quit_login():
         exitClause = confirm(text="Are you sure you want to Exit?", title="Confirm Exit",
                              buttons=['Yes', 'No'])
-        if exitClause == "Yes":
+        if exitClause == "Yes":                             # exit prompt
             exit()
         else:
             pass
 
-    login_window = Tk()
+    login_window = Tk()                             # GUI assembly
     login_window.columnconfigure(0, weight=1)
     login_window.columnconfigure(3, weight=1)
     login_window.rowconfigure(0, weight=1)

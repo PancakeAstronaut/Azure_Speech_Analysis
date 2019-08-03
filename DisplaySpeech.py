@@ -1,26 +1,26 @@
-from tkinter import *
-from pymsgbox import *
-import dashboard
-import AzureSpeechAnalysis as clear_polarity
+from tkinter import *               # tkinter for GUI assembly
+from pymsgbox import *              # for confirmation windows
+import dashboard                    # calling back to the dashboard
+import AzureSpeechAnalysis as clear_polarity            # for clearing the sentiment polarity index
 
 
 def exit_func():
     exitClause = confirm(text="Are you sure you want to Exit?", title="Confirm Exit",
-                         buttons=['Yes', 'No'])
+                         buttons=['Yes', 'No'])         # exit confirmation
     if exitClause == "Yes":
         exit()
     else:
         pass
 
 
-def display(query, sentiment):
+def display(query, sentiment):              # display function
 
-    def recall():
+    def recall():           # recalls the dash window if the user chooses to retry
         disp.withdraw()
         clear_polarity.sentiment_Polarity.pop()
         dashboard.disp_main()
 
-    polarity_analysis = round(float(sentiment[0]), 1)
+    polarity_analysis = round(float(sentiment[0]), 1)           # evaluates the sentiment polarity value
     if polarity_analysis > .5:
         tone = "Positive"
     elif polarity_analysis < .5:
@@ -30,7 +30,7 @@ def display(query, sentiment):
     else:
         tone = "Couldn't Capture Tone"
 
-    disp = Tk()
+    disp = Tk()         # GUI assembly
     disp.title("Azure Text Analysis")
     disp.columnconfigure(0, weight=1)
     disp.rowconfigure(0, weight=1)

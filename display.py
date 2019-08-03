@@ -1,9 +1,9 @@
-from tkinter import *
-from pymsgbox import *
+from tkinter import *           # tkinter for GUI assembly
+from pymsgbox import *          # for confirmation boxes
 import CognitiveServicesTextAnalytics as AzureAPI
 
 
-def exit_func():
+def exit_func():                # exit confirmation
     exitClause = confirm(text="Are you sure you want to Exit?", title="Confirm Exit",
                          buttons=['Yes', 'No'])
     if exitClause == "Yes":
@@ -12,14 +12,14 @@ def exit_func():
         pass
 
 
-def display(query, sentiment):
+def display(query, sentiment):          # display function
 
-    def recall():
+    def recall():               # recall function resets if the user clicks retry
         AzureAPI.sentiment_Polarity.pop()
         disp.withdraw()
         AzureAPI.get_search_query()
 
-    polarity_analysis = round(float(sentiment[0]), 1)
+    polarity_analysis = round(float(sentiment[0]), 1)           # analyzes the sentiment polarity value
     if polarity_analysis > .5:
         tone = "Positive"
     elif polarity_analysis < .5:
@@ -29,7 +29,7 @@ def display(query, sentiment):
     else:
         tone = "Couldn't Capture Tone"
 
-    disp = Tk()
+    disp = Tk()             # GUI assembly
     disp.title("Azure Text Analysis")
     disp.columnconfigure(0, weight=1)
     disp.rowconfigure(0, weight=1)
