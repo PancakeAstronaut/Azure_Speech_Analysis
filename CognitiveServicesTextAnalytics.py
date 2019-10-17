@@ -51,11 +51,11 @@ def get_search_query():
         display.display(inputVar, sentiment_Polarity)
 
     search = Tk()
-    search.title("Azure Text Analytics Search")  # window title
+    search.title("SpeechTone Search")  # window title
     search.columnconfigure(0, weight=1)
     search.rowconfigure(0, weight=1)
     search.configure(background='blue')  # window background color
-    label_term1 = Label(search, text="Enter a string of text for Azure to analyze:")
+    label_term1 = Label(search, text="Enter text to analyze:")
     label_term1.grid(column=3, row=2)  # labels and entry boxes
     search_string = Entry(search, width=50)
     search_string.grid(column=3, row=3)

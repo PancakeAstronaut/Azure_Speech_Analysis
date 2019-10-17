@@ -40,7 +40,7 @@ def display(query, sentiment):          # display function
         tone = "Couldn't Capture Tone"
 
     disp = Tk()             # GUI assembly
-    disp.title("Azure Text Analysis")
+    disp.title("SpeechTone Report")
     disp.columnconfigure(0, weight=1)
     disp.rowconfigure(0, weight=1)
     disp.configure(background='blue')

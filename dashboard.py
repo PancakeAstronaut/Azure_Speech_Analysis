@@ -52,7 +52,7 @@ def disp_main():
             pass
 
     frame = Tk()                            # GUI assembly
-    frame.title("Azure Text Analysis")
+    frame.title("SpeechTone")
     frame.configure(background='blue')
     frame.columnconfigure(0, weight=1)
     frame.rowconfigure(0, weight=1)
@@ -64,9 +64,7 @@ def disp_main():
     paddingbottom.grid(column=3, row=15)
     paddingtop = Label(frame, bg='blue', text="\n\n")
     paddingtop.grid(column=3, row=0)
-    introlbl = Label(frame, text="Welcome to the Text Analysis Tool using\n"
-                                 "Microsoft Azure Cognitive Services:\n"
-                                 "Text Analytics/Speech-to-Text API")
+    introlbl = Label(frame, text="Welcome to the SpeechTone")
     introlbl.grid(column=3, row=1)
     text_login = Button(frame, text="Analyze Text", command=text_analysis_api_call)  # buttons to call functions
     text_login.grid(column=3, row=9)
