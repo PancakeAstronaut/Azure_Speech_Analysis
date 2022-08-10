@@ -40,7 +40,7 @@ def get_search_query():
         ]
         search_string.delete(first=0, last=50)
         search.withdraw()
-        subscription_key = "d671436ef9ca42fb9b9205b8b209528c"  # Azure Account Subscription Key
+        subscription_key = ""  # Azure Account Subscription Key
         credentials = CognitiveServicesCredentials(subscription_key)  # Establishing Credentials
         text_analytics_url = "https://eastus.api.cognitive.microsoft.com/"  # setting the url for text analytics
         text_analytics = TextAnalyticsClient(endpoint=text_analytics_url, credentials=credentials)  # setting the endpoint and adding credentials
