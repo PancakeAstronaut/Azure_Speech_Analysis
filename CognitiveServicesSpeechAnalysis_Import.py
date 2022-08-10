@@ -2,7 +2,7 @@ import json                 # json to format the response information
 import requests             # requests to make HTTP POST requests to Cognitive Services
 import AzureSpeechAnalysis as analyze         # Importing this module to call the analysis function
 
-KEY = '31efbb95e1a04281bb34a2c098a9891c'        # Azure API Key
+KEY = ''        # Azure API Key
 REGION = 'eastus'                               # Service Region
 MODE = 'interactive'                            # Use Mode
 LANG = 'en-US'                                  # Language Specification
